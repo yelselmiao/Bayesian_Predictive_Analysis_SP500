@@ -15,26 +15,6 @@ library(ggfortify)
 ```
 
 ```{r}
-parkins <- read.csv("../data/parkinsons_updrs.csv")
-```
-
-```{r}
-parkins
-```
-
-```{r}
-glimpse(parkins)
-```
-
-```{r}
-parkins %>% ggplot(aes(x = as.factor(subject.), y = test_time)) + geom_boxplot()
-```
-
-```{r}
-parkins %>% group_by(subject.) %>% count()
-```
-
-```{r}
 dji <- read.csv("../data/dow_jones_index/dow_jones_index.csv")
 ```
 
