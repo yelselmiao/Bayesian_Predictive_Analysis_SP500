@@ -17,11 +17,73 @@ library(lubridate)
 
 ```{r}
 data = read.csv("../data/sp500.csv")
+vix = read.csv("../data/VIX_History.csv")
 data$Date = as.Date(data$Date)
-data = data %>% filter(!is.na(PE10))
+vix$DATE = as.Date(vix$DATE, format = "%m/%d/%Y")
+data = data %>% filter(!is.na(PE10), Date > 1971-12-31)
 ```
 
 ```{r}
-summary(data)
+vix %>% 
+  group_by(month=floor_date(DATE, "month")) %>%
+  summarize(vix_avg=mean(CLOSE)) %>%
+  filter(month < "2018-05-01")
 ```
 
+```{r}
+data %>% filter(Date > "1989-12-01")
+```
+
+```{r}
+p_sp500 = data %>% 
+  ggplot(aes(x = Date, y = SP500)) +
+  geom_point(size = 1)
+p_cpi = data %>% 
+  ggplot(aes(x = Date, y = Consumer.Price.Index)) +
+  geom_line(color = "red")
+p_lir = data %>% 
+  ggplot(aes(x = Date, y = Long.Interest.Rate)) +
+  geom_line(color = "blue")
+p_pe10 = data %>% 
+  ggplot(aes(x = Date, y = PE10)) +
+  geom_line(color = "brown")
+p_div = data %>% 
+  ggplot(aes(x = Date, y = Dividend)) +
+  geom_line(color = "green")
+p_earn = data %>% 
+  ggplot(aes(x = Date, y = Earnings)) +
+  geom_line(color = "yellow")
+  
+```
+
+```{r}
+p_sp500
+```
+
+```{r}
+p_cpi
+```
+
+```{r}
+p_pe10
+```
+
+```{r}
+p_lir
+```
+
+```{r}
+p_div
+```
+
+```{r}
+p_earn
+```
+
+
+```{r}
+data %>% 
+  ggplot(aes(x = Date, y = SP500)) +
+  geom_point() +
+  geom_line(aes(x = Date, y = Real.Price), color = "red")
+```
