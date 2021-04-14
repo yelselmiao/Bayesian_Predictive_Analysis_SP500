@@ -16,4 +16,7 @@
 14. [Exploring the dynamics of Bitcoin’s price: A Bayesian structural time series approach](https://pagines.uab.cat/appliedeconomics/sites/pagines.uab.cat.appliedeconomics/files/poyser_o._paper-compressed.pdf)
 15. [Fitting Bayesian structural time series with the bsts R package](https://www.unofficialgoogledatascience.com/2017/07/fitting-bayesian-structural-time-series.html)
 16. [贝叶斯结构化时间序列方法](https://site.douban.com/146782/widget/notes/15517178/note/321146275/)
-17. [CausalImpac](http://google.github.io/CausalImpact/CausalImpact.html#running-an-analysis)
+17. [MODELLING NON-STATIONARY FINANCIAL TIME SERIES WITH INPUT WARPED STUDENT T-PROCESSES](http://www.ipe.ro/rjef/rjef3_19/rjef3_19p51-61.pdf)
+18. [Financial Applications of Gaussian Processes and Bayesian Optimization](http://www.thierry-roncalli.com/download/Bayesian_Optimization.pdf)
+19. [Gaussian Process](https://courses.media.mit.edu/2010fall/mas622j/ProblemSets/slidesGP.pdf)
+20. [NONPARAMETRIC TIME SERIES ANALYSIS USING GAUSSIAN PROCESSES](https://damouras.github.io/files/thesis.pdf)
