@@ -12,3 +12,5 @@
 10. [Stock Closing Price Prediction and Analysis](https://github.com/vidhig/stock-closing-price-prediction-bayesian-analysis/blob/master/report.pdf)  
 11. [A Bayesian approach to predicting stock performance using analyst reviews](https://github.com/lschlessinger1/Bayesian-Stock-Price-Prediction/blob/master/A%20Bayesian%20approach%20to%20predicting%20stock%20performance%20using%20analyst%20reviews.pdf)  It uses three differnt bayesian modesl
 12. [COMPARING AND EVALUATING BAYESIAN PREDICTIVE DISTRIBUTIONS OF ASSET RETURNS](https://www.econstor.eu/bitstream/10419/153403/1/ecbwp0969.pdf)
+13. [The impact of COVID-19 on stock market performance in Africa: A Bayesian structural time series approach](https://www.sciencedirect.com/science/article/pii/S0148619520304124?dgcid=rss_sd_all)
+14. [Exploring the dynamics of Bitcoin’s price: A Bayesian structural time series approach](https://pagines.uab.cat/appliedeconomics/sites/pagines.uab.cat.appliedeconomics/files/poyser_o._paper-compressed.pdf)
