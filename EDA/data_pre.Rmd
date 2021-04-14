@@ -127,13 +127,24 @@ data_ts = xts(data[-1], data$Date)
 ```
 
 ```{r, include=FALSE}
-ss = AddLocalLinearTrend(list(), data_ts$SP500)
-ss = AddSeasonal(ss, data_ts$SP500, nseasons = 12)
-model = bsts(SP500 ~ ., state.specification = ss, data =
-                data_ts, niter = 1000)
+ss = AddLocalLinearTrend(list(), data_ts$Earnings)
+#ss = AddSeasonal(ss, data_ts$SP500, nseasons = 12)
+model = bsts(Earnings ~ ., 
+             state.specification = ss, 
+             data = data_ts, 
+             niter = 1000)
 ```
 
 ```{r}
 summary(model)
+```
+
+```{r, fig.width=12, fig.height=6}
+plot(model)
+plot(model, "components")  # plot(model1, "comp") works too!
+```
+
+```{r}
+plot(model, "coef")
 ```
 
