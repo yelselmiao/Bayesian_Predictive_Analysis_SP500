@@ -37,7 +37,7 @@ head(data, 10)
 ```
 
 ```{r}
-inner_join(data, vix)
+data = inner_join(data, vix)
 ```
 
 
@@ -50,21 +50,31 @@ p_cpi = data %>%
   geom_line(color = "red")
 p_lir = data %>% 
   ggplot(aes(x = Date, y = Long.Interest.Rate)) +
-  geom_line(color = "blue")
+  geom_line(color = "red")
 p_pe10 = data %>% 
   ggplot(aes(x = Date, y = PE10)) +
-  geom_line(color = "brown")
+  geom_line(color = "blue")
 p_div = data %>% 
   ggplot(aes(x = Date, y = Dividend)) +
-  geom_line(color = "green")
+  geom_line(color = "blue")
 p_earn = data %>% 
   ggplot(aes(x = Date, y = Earnings)) +
-  geom_line(color = "yellow")
-  
+  geom_line(color = "blue")
+p_vix = data %>% 
+  ggplot(aes(x = Date, y = VIX)) +
+  geom_line(color = "red")
 ```
 
 ```{r}
 p_sp500
+```
+
+```{r}
+p_vix
+```
+
+```{r}
+p_lir
 ```
 
 ```{r}
@@ -73,10 +83,6 @@ p_cpi
 
 ```{r}
 p_pe10
-```
-
-```{r}
-p_lir
 ```
 
 ```{r}
