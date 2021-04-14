@@ -11,3 +11,4 @@
 9. [S&P 500 Index Analysis & Forecast](https://github.com/irkaal/sp-500) Time series tho.  
 10. [Stock Closing Price Prediction and Analysis](https://github.com/vidhig/stock-closing-price-prediction-bayesian-analysis/blob/master/report.pdf)  
 11. [A Bayesian approach to predicting stock performance using analyst reviews](https://github.com/lschlessinger1/Bayesian-Stock-Price-Prediction/blob/master/A%20Bayesian%20approach%20to%20predicting%20stock%20performance%20using%20analyst%20reviews.pdf)  It uses three differnt bayesian modesl
+12. [COMPARING AND EVALUATING BAYESIAN PREDICTIVE DISTRIBUTIONS OF ASSET RETURNS](https://www.econstor.eu/bitstream/10419/153403/1/ecbwp0969.pdf)
