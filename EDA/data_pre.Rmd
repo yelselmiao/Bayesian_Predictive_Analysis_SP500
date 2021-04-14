@@ -24,15 +24,22 @@ data = data %>% filter(!is.na(PE10), Date > 1971-12-31)
 ```
 
 ```{r}
-vix %>% 
-  group_by(month=floor_date(DATE, "month")) %>%
-  summarize(vix_avg=mean(CLOSE)) %>%
-  filter(month < "2018-05-01")
+vix = vix %>% 
+  group_by(Date=floor_date(DATE, "month")) %>%
+  summarize(VIX=mean(CLOSE)) %>%
+  filter(Date < "2018-05-01")
+head(vix, 10)
 ```
 
 ```{r}
-data %>% filter(Date > "1989-12-01")
+data = data %>% filter(Date > "1989-12-01")
+head(data, 10)
 ```
+
+```{r}
+inner_join(data, vix)
+```
+
 
 ```{r}
 p_sp500 = data %>% 
