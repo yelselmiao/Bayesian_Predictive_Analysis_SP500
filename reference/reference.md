@@ -28,4 +28,4 @@
 3. [Bayesian Nonparametrics](http://pages.cs.wisc.edu/~jerryzhu/cs731/bnp.pdf)
 4. [Long-term Stock Market Forecasting using Gaussian Processes](https://www.cs.ubc.ca/~nando/540-2013/projects/p5.pdf)
 5. [Gaussian Process Regression and Forecasting Stock Trends](https://github.com/gdroguski/GaussianProcesses#gaussian-processes)
-6. [Comparison between Autoregression model and Gaussian Process model on stock price prediction: a case study with the Microsoft stock]
+6. [Comparison between Autoregression model and Gaussian Process model on stock price prediction: a case study with the Microsoft stock](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9382567)
