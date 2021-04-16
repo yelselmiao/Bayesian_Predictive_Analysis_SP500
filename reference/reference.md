@@ -1,4 +1,4 @@
-# Reference
+## Interesting Materials
 
 1. [Bayesian Analysis via Markov Chain Monte Carlo Algorithm on Logistic Regression Model](https://www.ripublication.com/gjpam19/gjpamv15n2_08.pdf)
 2. [【Series】 贝叶斯数据分析](https://blog.vicayang.cc/Series-Bayesian-Data-Analysis/)
@@ -20,3 +20,12 @@
 18. [Financial Applications of Gaussian Processes and Bayesian Optimization](http://www.thierry-roncalli.com/download/Bayesian_Optimization.pdf)
 19. [Gaussian Process](https://courses.media.mit.edu/2010fall/mas622j/ProblemSets/slidesGP.pdf)
 20. [NONPARAMETRIC TIME SERIES ANALYSIS USING GAUSSIAN PROCESSES](https://damouras.github.io/files/thesis.pdf)
+
+
+## Gaussion Process
+1. [orecasting and Trading Commodity Contract Spreads with Gaussian Processes](http://www.iro.umontreal.ca/~pift6266/A07/documents/gp_spreads_cef07.pdf)
+2. [Gaussian Process Regression Models for Predicting Stock Trends](https://www.researchgate.net/publication/249769503_Gaussian_Process_Regression_Models_for_Predicting_Stock_Trends)
+3. [Bayesian Nonparametrics](http://pages.cs.wisc.edu/~jerryzhu/cs731/bnp.pdf)
+4. [Long-term Stock Market Forecasting using Gaussian Processes](https://www.cs.ubc.ca/~nando/540-2013/projects/p5.pdf)
+5. [Gaussian Process Regression and Forecasting Stock Trends](https://github.com/gdroguski/GaussianProcesses#gaussian-processes)
+6. [Comparison between Autoregression model and Gaussian Process model on stock price prediction: a case study with the Microsoft stock]
