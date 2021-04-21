@@ -1,0 +1,132 @@
+---
+title: "GP"
+author: "Zhipeng Zhu"
+date: "4/15/2021"
+output:
+  html_document:
+    theme: spacelab
+    toc: yes
+    df_print: paged
+  pdf_document: default
+urlcolor: BrickRed
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, message=FALSE}
+library(tidyverse)
+library(ggfortify)
+library(lubridate)
+library(bsts)
+```
+
+# Data 
+## Data Import
+```{r}
+VIX = read.csv("VIX.csv")
+VIX$Date = as.Date(VIX$Date, format = "%m/%d/%y")
+VIX = data.frame(VIX)
+VIX = VIX[order(VIX$Date),]
+VIX = VIX %>% rename(vix = Close)
+```
+
+```{r}
+df1 = read.csv("sp500.csv")
+df1$Date = as.Date(df1$Date)
+df1 = df1 %>% dplyr::select(Date, Close)
+```
+
+## Data Slice
+```{r}
+df2 = left_join(df1, VIX) %>% dplyr::select(Date, Close, vix)
+df3TR = df2 %>% filter(Date < "2021-01-01" & Date >= "2015-01-01")
+df3TE = df2 %>% filter(Date >= "2021-01-01")
+```
+
+# BSTS Model
+## M1
+```{r}
+model_components = list()
+model_components = AddLocalLinearTrend(model_components, y = df3TR$Close)
+model_components = AddSeasonal(model_components, y = df3TR$Close, nseasons  = 52)
+fit01 = bsts(df3TR$Close, model_components, niter = 2000)
+```
+
+```{r, fig.width=10, fig.height=5}
+burnin = 1000 
+tibble(
+  date = df3TR$Date,
+  trend = colMeans(fit01$state.contributions[-(1:burnin),"trend",]),
+  seasonality = colMeans(fit01$state.contributions[-(1:burnin),"seasonal.52.1",])) %>%
+  gather("component", "value", trend, seasonality) %>%
+  ggplot(aes(x = date, y= value)) + 
+    geom_line() + theme_bw() + 
+    theme(legend.title = element_blank()) + ylab("") + xlab("") +
+    facet_grid(component ~ ., scales="free") + guides(colour=FALSE) +
+    theme(axis.text.x=element_text(angle = -90, hjust = 0))
+```
+
+```{r, fig.width = 7, fig.height=5}
+pred01 = predict.bsts(fit01, df3TE, horizon = 70)
+```
+
+## M2
+```{r}
+model_components = list()
+model_components = AddLocalLinearTrend(model_components, y = df3TR$Close)
+model_components = AddSeasonal(model_components, y = df3TR$Close, nseasons  = 52)
+fit03 = bsts(Close ~ ., state.specification = model_components, 
+              data = df3TR, niter = 2000)
+```
+
+```{r, fig.width=10, fig.height=5}
+burnin = 1000 
+tibble(
+  date = df3TR$Date,
+  trend = colMeans(fit03$state.contributions[-(1:burnin),"trend",]),
+  seasonality = colMeans(fit03$state.contributions[-(1:burnin),"seasonal.52.1",])) %>%
+  gather("component", "value", trend, seasonality) %>%
+  ggplot(aes(x = date, y= value)) + 
+    geom_line() + theme_bw() + 
+    theme(legend.title = element_blank()) + ylab("") + xlab("") +
+    facet_grid(component ~ ., scales="free") + guides(colour=FALSE) +
+    theme(axis.text.x=element_text(angle = -90, hjust = 0))
+```
+
+```{r, fig.width = 7, fig.height=5}
+pred03 = predict(fit03, newdata = df3TE, horizon = 70)
+```
+
+## Prediction Results
+### Prediction
+```{r, fig.width = 8, fig.height=8}
+par(mfrow=c(2,1))
+plot(pred01, plot.original = 70, ylab = "S&P 500 (a)", xlab = "Trading Days")
+lines(y = df3TE$Close, x = c(1512:1581), col = "red")
+
+plot(pred03, plot.original = 70, ylab = "S&P 500 (b)", xlab = "Trading Days")
+lines(y = df3TE$Close, x = c(1512:1581), col = "red")
+```
+
+### Evaluation
+
+MSE Values
+```{r}
+library(MLmetrics)
+MSEbsts1=MSE(pred01$mean,df3TE$Close)
+MSEbsts3=MSE(pred03$mean,df3TE$Close)
+MSEbsts1
+MSEbsts3
+```
+
+R-Squared Values
+```{r}
+rsq = function (x, y) {
+  cor(x, y) ^ 2
+}
+
+rsq(pred01$mean,df3TE$Close)
+rsq(pred03$mean,df3TE$Close)
+```
