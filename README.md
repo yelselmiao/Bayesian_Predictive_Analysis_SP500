@@ -1,1 +1,1 @@
-#  Bayesian Predictiv Analysis of S&P 500 Index
+#  Bayesian Predictive Analysis of S&P 500 Index
